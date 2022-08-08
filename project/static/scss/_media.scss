@@ -1,0 +1,19 @@
+@media (min-width: 768px) {
+  header .leftHeader, .rightHeader{
+    padding: 18px 32px;
+  }
+
+  header .rightHeader .user_img, .cart_img{
+    display: inline !important;
+  }
+}
+
+@media(min-width: 1600px) {
+  header .leftHeader, .rightHeader{
+    padding: 18px 23px;
+  }
+  .container{
+    width: 1140px;
+    margin: 0 auto;
+  }
+}
