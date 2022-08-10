@@ -49,6 +49,10 @@ header .rightHeader .user_img {
   cursor: pointer;
 }
 
+.humburgerHeader {
+  background: #004524;
+}
+
 .goods-list {
   padding: 10px 15px;
   box-sizing: border-box;
@@ -56,6 +60,9 @@ header .rightHeader .user_img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.goods-list .goods-item {
+  width: 100%;
 }
 .goods-list .cardImg {
   background: #222222;
@@ -90,12 +97,89 @@ header .rightHeader .user_img {
   color: #222222;
 }
 
+.constructor {
+  margin-top: 50px;
+  display: flex;
+}
+.constructor .leftSide {
+  background: #004524;
+  width: 30%;
+  margin-right: 20px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+.constructor .leftSide .leftSideTitle {
+  font-size: 20px;
+  color: #FFA500;
+  font-weight: 700;
+}
+.constructor .leftSide .constructorForm .labelText {
+  font-size: 14px;
+  color: #FFA500;
+  font-weight: 500;
+}
+.constructor .leftSide .constructorForm span {
+  margin-top: 10px;
+}
+.constructor .leftSide .constructorForm input {
+  display: block;
+  background: none;
+  color: #FFA500;
+  margin-bottom: 15px;
+  border: 1px solid #FFA500;
+}
+.constructor .leftSide .constructorForm .sizeCheckbox, .constructor .leftSide .constructorForm .stuffCheckbox, .constructor .leftSide .constructorForm .toppingCheckbox {
+  display: flex;
+}
+.constructor .leftSide .constructorForm .sizeCheckbox .checkboxItem, .constructor .leftSide .constructorForm .stuffCheckbox .checkboxItem, .constructor .leftSide .constructorForm .toppingCheckbox .checkboxItem {
+  display: flex;
+}
+.constructor .leftSide .constructorForm button {
+  width: 200px;
+  height: 25px;
+  background: #FFA500;
+  border: none;
+  display: block;
+  margin: 30px auto 0;
+}
+.constructor .rightSide {
+  width: 70%;
+}
+.constructor .rightSide .Img {
+  display: none;
+}
+.constructor .rightSide .Img .burgerImg {
+  width: 250px;
+  height: 250px;
+}
+.constructor .rightSide .burgerInfo {
+  display: none;
+  flex-direction: column;
+}
+.constructor .rightSide .burgerInfo .burgerName, .constructor .rightSide .burgerInfo .burgerPrice {
+  margin-bottom: 15px;
+}
+
 @media (min-width: 768px) {
   header .leftHeader, .rightHeader {
     padding: 18px 32px;
   }
   header .rightHeader .user_img, .cart_img {
     display: inline !important;
+  }
+  .goods-list {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .goods-list .goods-item {
+    width: 24%;
+  }
+  .goods-list .goods-item:not(:nth-child(4n)) {
+    margin-right: 10px;
+  }
+  .goods-list .goods-item:nth-child(n+5) {
+    margin-top: 10px;
   }
 }
 @media (min-width: 1600px) {
