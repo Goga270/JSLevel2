@@ -56,6 +56,10 @@ header {
 
 }
 
+.humburgerHeader{
+  background: #004524;
+}
+
 .goods-list{
   padding: 10px 15px;
   box-sizing: border-box;
@@ -63,6 +67,10 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .goods-item{
+    width: 100%;
+  }
 
   .cardImg{
     background: #222222;
@@ -98,6 +106,77 @@ header {
       color: #222222;
     }
 
+  }
+}
+
+.constructor{
+  margin-top: 50px;
+  display: flex;
+
+  .leftSide{
+    background: #004524;
+    width: 30%;
+    margin-right: 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+
+    .leftSideTitle{
+      font-size: 20px;
+      color: #FFA500;
+      font-weight: 700;
+    }
+
+    .constructorForm{
+
+      .labelText{
+        font-size: 14px;
+        color: #FFA500;
+        font-weight: 500;
+      }
+      span{
+        margin-top: 10px;
+      }
+      input{
+        display: block;
+        background: none;
+        color: #FFA500;
+        margin-bottom: 15px;
+        border: 1px solid #FFA500;
+      }
+      .sizeCheckbox, .stuffCheckbox, .toppingCheckbox{
+        display: flex;
+        .checkboxItem{
+          display: flex;
+        }
+      }
+
+      button{
+        width: 200px;
+        height: 25px;
+        background: #FFA500;
+        border: none;
+        display: block;
+        margin: 30px auto 0;
+      }
+    }
+  }
+
+  .rightSide{
+    width: 70%;
+    .Img{
+      display: none;
+      .burgerImg{
+        width: 250px;
+        height: 250px;
+      }
+    }
+    .burgerInfo{
+      display: none;
+      flex-direction: column;
+      .burgerName,.burgerPrice{
+        margin-bottom: 15px;
+      }
+    }
   }
 }
 

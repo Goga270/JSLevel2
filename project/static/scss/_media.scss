@@ -6,6 +6,22 @@
   header .rightHeader .user_img, .cart_img{
     display: inline !important;
   }
+
+  .goods-list{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .goods-item {
+      width: 24%;
+
+      &:not(:nth-child(4n)){
+        margin-right: 10px;
+      }
+      &:nth-child(n+5){
+        margin-top: 10px;
+      }
+    }
+  }
 }
 
 @media(min-width: 1600px) {

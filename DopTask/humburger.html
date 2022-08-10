@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vkusno&Tochka</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="../project/static/css/style.css">
+</head>
+<header class="humburgerHeader">
+    <div class="leftHeader">
+        <img src="images/logo_vkusno_tochka.svg" alt="logo" class="logo_img">
+        <img src="../project/static/images/header/search.png" alt="search" class="searh_img">
+    </div>
+    <div class="rightHeader">
+        <img src="../project/static/images/header/bars.png" alt="menu" class="menu_img">
+        <img src="../project/static/images/header/user.png" alt="user" class="user_img">
+        <img src="../project/static/images/header/cart.png" alt="cart" class="cart_img">
+    </div>
+</header>
+<body>
+    <main class="container">
+        <div class="constructor">
+            <div class="leftSide">
+                <div class="leftSideTitle">
+                    Соберите свой бургер!
+                </div>
+                <form class="constructorForm" action="#">
+                    <label class="labelText" for="name">Введите название</label>
+                    <input id="name" type="text">
+                    <span class="labelText">Задайте размер вашего бургера!</span>
+                    <div class="sizeCheckbox">
+                        <div class="checkboxItem">
+                            <label class="labelText" for="small">Small</label>
+                            <input class="size" id="small" type="checkbox" name="small">
+                        </div>
+                        <div class="checkboxItem">
+                            <label class="labelText" for="large">Large</label>
+                            <input class="size" id="large" type="checkbox" name="large">
+                        </div>
+                    </div>
+                    <span class="labelText">Выберите начинку для бургера!</span>
+                    <div class="stuffCheckbox">
+                        <div class="checkboxItem">
+                            <label class="labelText" for="small">Сыыыр</label>
+                            <input class="stuffing" id="cheese" type="checkbox" name="cheese">
+                        </div>
+                        <div class="checkboxItem">
+                            <label class="labelText" for="large">Салат</label>
+                            <input class="stuffing" id="salad" type="checkbox" name="salad">
+                        </div>
+                        <div class="checkboxItem">
+                            <label class="labelText" for="large">Картошка</label>
+                            <input class="stuffing" id="potato" type="checkbox" name="potato">
+                        </div>
+                    </div>
+                    <span class="labelText">Выберите чем полить/посыпать ваш бургер</span>
+                    <div class="toppingCheckbox">
+                        <div class="checkboxItem">
+                            <label class="labelText" for="small">Приправа</label>
+                            <input class="topping" id="specie" type="checkbox" name="specie">
+                        </div>
+                        <div class="checkboxItem">
+                            <label class="labelText" for="large">Майонез</label>
+                            <input class="topping" id="maionez" type="checkbox" name="maionez">
+                        </div>
+                    </div>
+                    <button id="burgerSubmit">Создать!</button>
+                </form>
+            </div>
+            <div class="rightSide">
+                <div class="Img">
+                    <img class="burgerImg" src="#" alt="burger">
+                </div>
+                <div class="burgerInfo">
+                    <div class="burgerName">
+                        Название вашего Бургера: <span id="burgerName"> </span>
+                    </div>
+                    <div class="burgerPrice">
+                        Цена вашего Бургера: <span id="burgerPrice"> </span>
+                    </div>
+                    <div class="burgerCal">
+                        Калорийность вашего Бургера: <span id="burgerCal"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://kit.fontawesome.com/6d1c84ded8.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="hamburger.js"></script>
+</html>
