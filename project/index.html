@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eShop</title>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="leftHeader">
+      <img src="static/images/header/cake-slice.png" alt="logo" class="logo_img">
+      <img src="static/images/header/search.png" alt="search" class="searh_img">
+      <div class="searchInput ">
+        <input type="text" v-model="searchLine">
+      </div>
+    </div>
+    <div class="rightHeader">
+      <img src="static/images/header/bars.png" alt="menu" class="menu_img">
+      <img src="static/images/header/user.png" alt="user" class="user_img">
+      <img src="static/images/header/cart.png" v-on:click="cartIconClick" alt="cart" class="cart_img">
+    </div>
+  </header>
+  <main class="container">
+    {{searchLine}}
+    <div class="goods-list" v-if="!cartIsVisible && goods.length!=0">
+      <article v-for="item in this.goods" class="goods-item">
+        <div class="cardImg">
+          <img src="static/images/card/1.jpg" alt="#">
+          <div class="cardImgDark">
+            <button>
+              <img src="static/images/header/cart.png" alt="">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        <div class="cardInfo">
+          <div class="cardInfoTitle">
+            {{item.product_name}}
+          </div>
+          <div class="cardInfoPrice">
+            {{item.price}}
+          </div>
+          <button class="cardBuy" v-on:click="pushGoodToCart(item.product_name)">
+            Купить
+          </button>
+        </div>
+      </article>
+    </div>
+    <div class="goods-list" v-else-if="cartIsVisible && cartGoods.length!=0">
+      <article v-for="item in this.cartGoods" class="goods-item">
+        <div class="cardImg">
+          <img src="static/images/card/1.jpg" alt="#">
+          <div class="cardImgDark">
+            <button>
+              <img src="static/images/header/cart.png" alt="">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        <div class="cardInfo">
+          <div class="cardInfoTitle">
+            {{item.product_name}}
+          </div>
+          <div class="cardInfoPrice">
+            {{item.price}}
+          </div>
+          <button class="cardBuy">
+            Купить
+          </button>
+        </div>
+      </article>
+    </div>
+    <div class="goods-list" v-else-if="cartIsVisible">
+      ВАША КОРЗИНА ПУСТА
+    </div>
+    <div class="goods-list" v-else>
+      Нет данных!!!!
+    </div>
+    <div class="totalPrice">
+      Общая стоимость всех товаров: <span>{{this.calculatePrice()}}</span>
+    </div>
+  </main>
+</div>
+<script src="https://kit.fontawesome.com/6d1c84ded8.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="static/js/script.js"></script>
+</body>
+</html>

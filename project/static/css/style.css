@@ -15,14 +15,29 @@ header {
 }
 header .leftHeader {
   padding: 18px 16px;
+  display: flex;
+  flex-shrink: 3;
+}
+header .leftHeader .searchInput {
+  height: 30px;
+  margin-left: 10px;
+}
+header .leftHeader .searchInput input {
+  height: calc(100% - 6px);
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+}
+header .leftHeader .searchInput input:focus {
+  border: 2px solid grey;
 }
 header .leftHeader .logo_img {
   width: 40px;
   height: 30px;
 }
 header .leftHeader .searh_img {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   margin-left: 20px;
   cursor: pointer;
 }
