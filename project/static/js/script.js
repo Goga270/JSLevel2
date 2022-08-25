@@ -1,3 +1,81 @@
+let BaseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
+let Goods = "/catalogData.json";
+let Basket = "/getBasket.json"
+
+
+const app = new Vue({
+    el: "#app",
+    data: {
+        name: '',
+        goods: [],
+        filterGoods:[],
+        cartGoods:[],
+        searchLine:'searchLine',
+        cartIsVisible: false,
+        totalPrice:0,
+    },
+    methods: {
+        makeGetRequest(url){
+            return fetch(url).then((response)=>{
+                return response.json();
+            });
+        },
+        cartIconClick(event){
+            if(this.cartIsVisible){
+                this.cartIsVisible = false;
+            }else{
+                this.cartIsVisible = true;
+            }
+        },
+        calculatePrice(){
+            if(this.cartIsVisible){
+                this.totalPrice = this.cartGoods.reduce((prev,{price})=>{
+                    return prev+price;
+                },0);
+            }else {
+                this.totalPrice = this.goods.reduce((prev,{price})=>{
+                    return prev+price;
+                },0);
+            }
+            return this.totalPrice;
+        },
+        pushGoodToCart(product_name, event){
+            for(let i=0;i<this.goods.length;i++){
+                if(this.goods[i].product_name == product_name){
+                    this.cartGoods.push(this.goods[i]);
+                    return
+                }
+            }
+        },
+    },
+    mounted(){
+        this.makeGetRequest('https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json').then((value)=>{
+            this.goods = value;
+            this.calculatePrice();
+        })
+    },
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class GoodsItem{
     constructor({product_name:t, price:p, path="static/images/card/1.jpg"}) {
         this.title = t;
@@ -36,9 +114,10 @@ class GoodsItem{
 
 function makeGetRequest(url){
     return fetch(url).then((response)=>{
-            return response.json();
-        });
+        return response.json();
+    });
 }
+
 
 class GoodsList{
     BaseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
@@ -91,7 +170,7 @@ class GoodsList{
     }
 }
 
-const list = new GoodsList();
+/*const list = new GoodsList();
 list.fetchGoods().then(()=>{
     list.render();
     $('#totalPrice').text(list.calculatePrice());
@@ -99,4 +178,4 @@ list.fetchGoods().then(()=>{
 
 list.getBacketGoods().then(()=>{
     list.renderBucket();
-})
+})*/
