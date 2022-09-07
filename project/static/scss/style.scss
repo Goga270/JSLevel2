@@ -196,4 +196,59 @@ header {
   }
 }
 
+.cart-list{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: rgba(0,0,0,0.5);
+
+  .cart-listWrap{
+    width: 70%;
+    margin: auto;
+    background: white;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .cart-item {
+      .cardImg {
+        background: #222222;
+
+        img {
+          width: 200px;
+          height: 300px;
+        }
+      }
+
+      .cardInfo {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        background: #222222;
+
+        .cardInfoTitle, .cardInfoDescription, .cardInfoPrice, .cardBuy {
+          font-weight: 400;
+          font-family: Lato, sans-serif;
+          font-size: 14px;
+          padding: 0 6px;
+          color: white;
+          margin-top: 10px;
+        }
+
+        .cardBuy {
+          background: white;
+          border: none;
+          width: 50%;
+          margin: 12px auto;
+          color: #222222;
+        }
+      }
+    }
+  }
+}
+
 @import "media";

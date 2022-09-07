@@ -13,24 +13,11 @@
 </head>
 <body>
 <div id="app">
-  <header>
-    <div class="leftHeader">
-      <img src="static/images/header/cake-slice.png" alt="logo" class="logo_img">
-      <img src="static/images/header/search.png" alt="search" class="searh_img">
-      <div class="searchInput ">
-        <input type="text" v-model="searchLine">
-      </div>
-    </div>
-    <div class="rightHeader">
-      <img src="static/images/header/bars.png" alt="menu" class="menu_img">
-      <img src="static/images/header/user.png" alt="user" class="user_img">
-      <img src="static/images/header/cart.png" v-on:click="cartIconClick" alt="cart" class="cart_img">
-    </div>
-  </header>
+  <top-header></top-header>
   <main class="container">
-    {{searchLine}}
-    <div class="goods-list" v-if="!cartIsVisible && goods.length!=0">
-      <article v-for="item in this.goods" class="goods-item">
+    <!--<div class="goods-list" v-if="!cartIsVisible && filteredItems.length!=0">
+      <goods-item v-for="item in this.filteredItems" v-bind:item="item"></goods-item>
+      <article v-for="item in this.filteredItems" class="goods-item">
         <div class="cardImg">
           <img src="static/images/card/1.jpg" alt="#">
           <div class="cardImgDark">
@@ -52,8 +39,14 @@
           </button>
         </div>
       </article>
-    </div>
-    <div class="goods-list" v-else-if="cartIsVisible && cartGoods.length!=0">
+    </div>-->
+    <goods-list v-if="!cartIsVisible && filteredItems.length!=0" v-bind:cart-is-visible="cartIsVisible" v-bind:count-items="this.filteredItems.length">
+      <goods-item v-for="item in this.filteredItems" v-bind:item="item"></goods-item>
+    </goods-list>
+    <cart-list v-else-if="cartIsVisible">
+      <cart-item v-for="item in this.cartGoods" v-bind:item="item"></cart-item>
+    </cart-list>
+    <!--<div class="fixedCart" v-else-if="cartIsVisible && cartGoods.length!=0">
       <article v-for="item in this.cartGoods" class="goods-item">
         <div class="cardImg">
           <img src="static/images/card/1.jpg" alt="#">
@@ -76,13 +69,13 @@
           </button>
         </div>
       </article>
-    </div>
-    <div class="goods-list" v-else-if="cartIsVisible">
+    </div>-->
+    <!--<div class="goods-list" v-else-if="cartIsVisible">
       ВАША КОРЗИНА ПУСТА
     </div>
     <div class="goods-list" v-else>
       Нет данных!!!!
-    </div>
+    </div>-->
     <div class="totalPrice">
       Общая стоимость всех товаров: <span>{{this.calculatePrice()}}</span>
     </div>
@@ -90,6 +83,6 @@
 </div>
 <script src="https://kit.fontawesome.com/6d1c84ded8.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="static/js/script.js"></script>
+<script src="static/js/script.js" type="module"></script>
 </body>
 </html>
