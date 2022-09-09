@@ -1,0 +1,24 @@
+{
+  "name": "jslevel2",
+  "version": "1.0.0",
+  "description": "JsLevel2 Geekbrains project",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('hohoho');"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goga270/JSLevel2.git"
+  },
+  "author": "Goga270",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Goga270/JSLevel2/issues"
+  },
+  "homepage": "https://github.com/Goga270/JSLevel2#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}

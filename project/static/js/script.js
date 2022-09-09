@@ -165,6 +165,9 @@ Vue.component('cart-item', {
       </article>`
 })
 
+Vue.component({
+
+})
 
 export const app = new Vue({
     el: "#app",
