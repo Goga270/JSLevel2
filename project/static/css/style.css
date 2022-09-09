@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 body {
   font-family: "Lato", sans-serif;
-  margin: 0; }
+  margin: 0;
+}
 
 header {
   width: 100%;
@@ -10,50 +11,62 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; }
-  header .leftHeader {
-    padding: 18px 16px;
-    display: flex;
-    flex-shrink: 3; }
-    header .leftHeader .searchInput {
-      height: 30px;
-      margin-left: 10px; }
-      header .leftHeader .searchInput input {
-        height: calc(100% - 6px);
-        width: 100%;
-        outline: none;
-        border-radius: 10px; }
-        header .leftHeader .searchInput input:focus {
-          border: 2px solid grey; }
-    header .leftHeader .logo_img {
-      width: 40px;
-      height: 30px; }
-    header .leftHeader .searh_img {
-      width: 30px;
-      height: 30px;
-      margin-left: 20px;
-      cursor: pointer; }
-  header .rightHeader {
-    padding: 18px 16px; }
-    header .rightHeader .menu_img {
-      width: 32px;
-      height: 23px;
-      cursor: pointer; }
-    header .rightHeader .cart_img {
-      width: 32px;
-      height: 28px;
-      display: none;
-      cursor: pointer; }
-    header .rightHeader .user_img {
-      width: 29px;
-      height: 29px;
-      margin-left: 20px;
-      margin-right: 20px;
-      display: none;
-      cursor: pointer; }
+  justify-content: space-between;
+}
+header .leftHeader {
+  padding: 18px 16px;
+  display: flex;
+  flex-shrink: 3;
+}
+header .leftHeader .searchInput {
+  height: 30px;
+  margin-left: 10px;
+}
+header .leftHeader .searchInput input {
+  height: calc(100% - 6px);
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+}
+header .leftHeader .searchInput input:focus {
+  border: 2px solid grey;
+}
+header .leftHeader .logo_img {
+  width: 40px;
+  height: 30px;
+}
+header .leftHeader .searh_img {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+header .rightHeader {
+  padding: 18px 16px;
+}
+header .rightHeader .menu_img {
+  width: 32px;
+  height: 23px;
+  cursor: pointer;
+}
+header .rightHeader .cart_img {
+  width: 32px;
+  height: 28px;
+  display: none;
+  cursor: pointer;
+}
+header .rightHeader .user_img {
+  width: 29px;
+  height: 29px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: none;
+  cursor: pointer;
+}
 
 .humburgerHeader {
-  background: #004524; }
+  background: #004524;
+}
 
 .goods-list {
   padding: 10px 15px;
@@ -61,149 +74,188 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
-  .goods-list .goods-item {
-    width: 100%; }
-  .goods-list .cardImg {
-    background: #222222; }
-    .goods-list .cardImg img {
-      width: 100%;
-      height: auto; }
-    .goods-list .cardImg .cardImgDark {
-      display: none; }
-  .goods-list .cardInfo {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    background: #222222; }
-    .goods-list .cardInfo .cardInfoTitle, .goods-list .cardInfo .cardInfoDescription, .goods-list .cardInfo .cardInfoPrice, .goods-list .cardInfo .cardBuy {
-      font-weight: 400;
-      font-family: Lato, sans-serif;
-      font-size: 16px;
-      padding: 0 8px;
-      color: white;
-      margin-top: 12px; }
-    .goods-list .cardInfo .cardBuy {
-      background: white;
-      border: none;
-      width: 50%;
-      margin: 12px auto;
-      color: #222222; }
+  justify-content: center;
+}
+.goods-list .goods-item {
+  width: 100%;
+}
+.goods-list .cardImg {
+  background: #222222;
+}
+.goods-list .cardImg img {
+  width: 100%;
+  height: auto;
+}
+.goods-list .cardImg .cardImgDark {
+  display: none;
+}
+.goods-list .cardInfo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  background: #222222;
+}
+.goods-list .cardInfo .cardInfoTitle, .goods-list .cardInfo .cardInfoDescription, .goods-list .cardInfo .cardInfoPrice, .goods-list .cardInfo .cardBuy {
+  font-weight: 400;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  padding: 0 8px;
+  color: white;
+  margin-top: 12px;
+}
+.goods-list .cardInfo .cardBuy {
+  background: white;
+  border: none;
+  width: 50%;
+  margin: 12px auto;
+  color: #222222;
+}
 
 .constructor {
   margin-top: 50px;
-  display: flex; }
-  .constructor .leftSide {
-    background: #004524;
-    width: 30%;
-    margin-right: 20px;
-    padding: 10px 15px;
-    box-sizing: border-box; }
-    .constructor .leftSide .leftSideTitle {
-      font-size: 20px;
-      color: #FFA500;
-      font-weight: 700; }
-    .constructor .leftSide .constructorForm .labelText {
-      font-size: 14px;
-      color: #FFA500;
-      font-weight: 500; }
-    .constructor .leftSide .constructorForm span {
-      margin-top: 10px; }
-    .constructor .leftSide .constructorForm input {
-      display: block;
-      background: none;
-      color: #FFA500;
-      margin-bottom: 15px;
-      border: 1px solid #FFA500; }
-    .constructor .leftSide .constructorForm .sizeCheckbox, .constructor .leftSide .constructorForm .stuffCheckbox, .constructor .leftSide .constructorForm .toppingCheckbox {
-      display: flex; }
-      .constructor .leftSide .constructorForm .sizeCheckbox .checkboxItem, .constructor .leftSide .constructorForm .stuffCheckbox .checkboxItem, .constructor .leftSide .constructorForm .toppingCheckbox .checkboxItem {
-        display: flex; }
-    .constructor .leftSide .constructorForm button {
-      width: 200px;
-      height: 25px;
-      background: #FFA500;
-      border: none;
-      display: block;
-      margin: 30px auto 0; }
-  .constructor .rightSide {
-    width: 70%; }
-    .constructor .rightSide .Img {
-      display: none; }
-      .constructor .rightSide .Img .burgerImg {
-        width: 250px;
-        height: 250px; }
-    .constructor .rightSide .burgerInfo {
-      display: none;
-      flex-direction: column; }
-      .constructor .rightSide .burgerInfo .burgerName, .constructor .rightSide .burgerInfo .burgerPrice {
-        margin-bottom: 15px; }
+  display: flex;
+}
+.constructor .leftSide {
+  background: #004524;
+  width: 30%;
+  margin-right: 20px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+.constructor .leftSide .leftSideTitle {
+  font-size: 20px;
+  color: #FFA500;
+  font-weight: 700;
+}
+.constructor .leftSide .constructorForm .labelText {
+  font-size: 14px;
+  color: #FFA500;
+  font-weight: 500;
+}
+.constructor .leftSide .constructorForm span {
+  margin-top: 10px;
+}
+.constructor .leftSide .constructorForm input {
+  display: block;
+  background: none;
+  color: #FFA500;
+  margin-bottom: 15px;
+  border: 1px solid #FFA500;
+}
+.constructor .leftSide .constructorForm .sizeCheckbox, .constructor .leftSide .constructorForm .stuffCheckbox, .constructor .leftSide .constructorForm .toppingCheckbox {
+  display: flex;
+}
+.constructor .leftSide .constructorForm .sizeCheckbox .checkboxItem, .constructor .leftSide .constructorForm .stuffCheckbox .checkboxItem, .constructor .leftSide .constructorForm .toppingCheckbox .checkboxItem {
+  display: flex;
+}
+.constructor .leftSide .constructorForm button {
+  width: 200px;
+  height: 25px;
+  background: #FFA500;
+  border: none;
+  display: block;
+  margin: 30px auto 0;
+}
+.constructor .rightSide {
+  width: 70%;
+}
+.constructor .rightSide .Img {
+  display: none;
+}
+.constructor .rightSide .Img .burgerImg {
+  width: 250px;
+  height: 250px;
+}
+.constructor .rightSide .burgerInfo {
+  display: none;
+  flex-direction: column;
+}
+.constructor .rightSide .burgerInfo .burgerName, .constructor .rightSide .burgerInfo .burgerPrice {
+  margin-bottom: 15px;
+}
 
 .cart-list {
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: 99;
-  background: rgba(0, 0, 0, 0.5); }
-  .cart-list .cart-listWrap {
-    width: 70%;
-    margin: auto;
-    background: white;
-    padding: 15px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; }
-    .cart-list .cart-listWrap .cart-item .cardImg {
-      background: #222222; }
-      .cart-list .cart-listWrap .cart-item .cardImg img {
-        width: 200px;
-        height: 300px; }
-    .cart-list .cart-listWrap .cart-item .cardInfo {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 1fr);
-      background: #222222; }
-      .cart-list .cart-listWrap .cart-item .cardInfo .cardInfoTitle, .cart-list .cart-listWrap .cart-item .cardInfo .cardInfoDescription, .cart-list .cart-listWrap .cart-item .cardInfo .cardInfoPrice, .cart-list .cart-listWrap .cart-item .cardInfo .cardBuy {
-        font-weight: 400;
-        font-family: Lato, sans-serif;
-        font-size: 14px;
-        padding: 0 6px;
-        color: white;
-        margin-top: 10px; }
-      .cart-list .cart-listWrap .cart-item .cardInfo .cardBuy {
-        background: white;
-        border: none;
-        width: 50%;
-        margin: 12px auto;
-        color: #222222; }
+  background: rgba(0, 0, 0, 0.5);
+}
+.cart-list .cart-listWrap {
+  width: 70%;
+  margin: auto;
+  background: white;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.cart-list .cart-listWrap .cart-item {
+  width: 30% S;
+}
+.cart-list .cart-listWrap .cart-item .cardImg {
+  background: #222222;
+}
+.cart-list .cart-listWrap .cart-item .cardImg img {
+  width: 100%;
+  height: 300px;
+}
+.cart-list .cart-listWrap .cart-item .cardInfo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  background: #222222;
+}
+.cart-list .cart-listWrap .cart-item .cardInfo .cardInfoTitle, .cart-list .cart-listWrap .cart-item .cardInfo .cardInfoDescription, .cart-list .cart-listWrap .cart-item .cardInfo .cardInfoPrice, .cart-list .cart-listWrap .cart-item .cardInfo .cardBuy {
+  font-weight: 400;
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  padding: 0 6px;
+  color: white;
+  margin-top: 10px;
+}
+.cart-list .cart-listWrap .cart-item .cardInfo .cardBuy {
+  background: white;
+  border: none;
+  width: 50%;
+  margin: 12px auto;
+  color: #222222;
+}
 
 @media (min-width: 768px) {
   header .leftHeader, .rightHeader {
-    padding: 18px 32px; }
-
+    padding: 18px 32px;
+  }
   header .rightHeader .user_img, .cart_img {
-    display: inline !important; }
-
+    display: inline !important;
+  }
   .goods-list {
     width: 100%;
     flex-direction: row;
-    flex-wrap: wrap; }
-    .goods-list .goods-item {
-      width: 24%; }
-      .goods-list .goods-item:not(:nth-child(4n)) {
-        margin-right: 10px; }
-      .goods-list .goods-item:nth-child(n+5) {
-        margin-top: 10px; } }
+    flex-wrap: wrap;
+  }
+  .goods-list .goods-item {
+    width: 24%;
+  }
+  .goods-list .goods-item:not(:nth-child(4n)) {
+    margin-right: 10px;
+  }
+  .goods-list .goods-item:nth-child(n+5) {
+    margin-top: 10px;
+  }
+}
 @media (min-width: 1600px) {
   header .leftHeader, .rightHeader {
-    padding: 18px 23px; }
-
+    padding: 18px 23px;
+  }
   .container {
     width: 1140px;
-    margin: 0 auto; } }
+    margin: 0 auto;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
