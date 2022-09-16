@@ -213,8 +213,9 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     .cart-item {
-      width: 30%S;
+      width: 30%;
       .cardImg {
         background: #222222;
 
@@ -240,13 +241,14 @@ header {
           margin-top: 10px;
         }
 
-        .cardBuy {
+        .cardBuy, .deleteIcon {
           background: white;
           border: none;
           width: 50%;
           margin: 12px auto;
           color: #222222;
         }
+
       }
     }
   }

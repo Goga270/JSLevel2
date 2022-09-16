@@ -1,8 +1,22 @@
 import {bus} from "./bus.js";
+let urlbase = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json';
 
-let BaseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
-let Goods = "/catalogData.json";
-let Basket = "/getBasket.json"
+let BaseUrl = "http://localhost:8000";
+let Goods = "/goods.json";
+let Basket = "/basket-good"
+
+function service(url, method = 'GET', body){
+    return fetch(url,{
+        headers:Object.assign({}, (body)?{
+            'Content-Type': 'application/json; charset=utf-8'
+        }: {}),
+        method,
+        body: JSON.stringify(body)
+    }).then((res)=>{
+        return res.json();
+    });
+}
+
 Vue.component('top-header', {
     props: {
         'value': String,
@@ -23,17 +37,17 @@ Vue.component('top-header', {
     },
 
     template: ' <header>\n' +
-        '    <div class="leftHeader"> {{searchLine}}\n' +
-        '      <img src="static/images/header/cake-slice.png" alt="logo" class="logo_img">\n' +
+        '    <div class="leftHeader">\n' +
+        '      <img src="/images/header/cake-slice.png" alt="logo" class="logo_img">\n' +
         '      <div class="searchInput ">\n' +
         '        <search-input v-model="searchLine"></search-input>\n' +
         '      </div>' +
-        '       <img src="static/images/header/search.png" v-on:click="filterSearch" alt="search" class="searh_img">\n' +
+        '       <img src="/images/header/search.png" v-on:click="filterSearch" alt="search" class="searh_img">\n' +
         '    </div>\n' +
         '    <div class="rightHeader">\n' +
-        '      <img src="static/images/header/bars.png" alt="menu" class="menu_img">\n' +
-        '      <img src="static/images/header/user.png" alt="user" class="user_img">\n' +
-        '      <img src="static/images/header/cart.png" v-on:click="clickOnCartIconn" alt="cart" class="cart_img">\n' +
+        '      <img src="/images/header/bars.png" alt="menu" class="menu_img">\n' +
+        '      <img src="/images/header/user.png" alt="user" class="user_img">\n' +
+        '      <img src="/images/header/cart.png" v-on:click="clickOnCartIconn" alt="cart" class="cart_img">\n' +
         '    </div>\n' +
         '  </header>'
 });
@@ -65,17 +79,17 @@ Vue.component('goods-item', {
     },
     methods:{
         pushGoodToCart(item){
-            bus.$emit('push-good-to-cart', item);
+            service(BaseUrl+Basket, 'PUT', {id: item});
         },
 
     },
 
     template: `<article class="goods-item">
         <div class="cardImg">
-          <img src="static/images/card/1.jpg" alt="#">
+          <img src="/images/card/1.jpg" alt="#">
           <div class="cardImgDark">
             <button>
-              <img src="static/images/header/cart.png" alt="">
+              <img src="/images/header/cart.png" alt="">
               Add to Cart
             </button>
           </div>
@@ -87,7 +101,7 @@ Vue.component('goods-item', {
           <div class="cardInfoPrice">
             {{item.price}}
           </div>
-          <button class="cardBuy" v-on:click="pushGoodToCart(item.product_name)">
+          <button class="cardBuy" v-on:click="pushGoodToCart(item.id)">
             Купить
           </button>
         </div>
@@ -119,18 +133,30 @@ Vue.component('cart-list', {
         'cartIsVisible',
         'countItems',
     ],
-    data: function (){
+    data(){
         return{
-
+            basketGoodsItems:[]
         }
     },
     methods:{
-
+        updateCart(){
+            service(BaseUrl+Basket).then((result)=>{
+                this.basketGoodsItems = result;
+            });
+        }
+    },
+    created(){
+      bus.$on('update-cart', this.updateCart);
+    },
+    mounted(){
+        service(BaseUrl+Basket).then((result)=>{
+            this.basketGoodsItems = result;
+        });
     },
     template:`
 <div class="cart-list">
     <div class="cart-listWrap">
-        <slot></slot>
+        <cart-item v-for="item in basketGoodsItems" v-bind:item="item"></cart-item>
     </div>
  </div>`
 });
@@ -139,28 +165,39 @@ Vue.component('cart-item', {
     props:[
         'item'
     ],
-    data: function (){
+    data(){
         return{
 
         }
     },
     methods:{
-
+        addOneMoreItemToCart(item){
+            service(BaseUrl+Basket, 'PUT', {id: item}).then((res)=>{
+                bus.$emit('update-cart');
+            });
+        },
+        deleteOneItemToCart(item){
+            service(BaseUrl+Basket, 'DELETE', {id: item}).then((res)=>{
+                bus.$emit('update-cart');
+            });
+        },
     },
     template:`<article class="cart-item">
         <div class="cardImg">
-          <img src="static/images/card/1.jpg" alt="#">
+          <img src="/images/card/1.jpg" alt="#">
         </div>
         <div class="cardInfo">
           <div class="cardInfoTitle">
-            {{item.product_name}}
+            {{item?.data?.product_name}}
           </div>
+          <div class="cardInfoCartCount">{{item?.count}}</div>
           <div class="cardInfoPrice">
-            {{item.price}}
+            {{item?.total}}
           </div>
-          <button class="cardBuy"">
-            Купить
+          <button class="cardBuy" v-on:click="addOneMoreItemToCart(item.id)">
+            Добавить еще
           </button>
+          <button class="deleteIcon" v-on:click="deleteOneItemToCart(item.id)" >Удалить товар</button>
         </div>
       </article>`
 })
@@ -183,9 +220,10 @@ export const app = new Vue({
     },
     components: {},
     methods: {
-        makeGetRequest(url) {
-            return fetch(url).then((response) => {
-                return response.json();
+        makeGetRequest(url, method='GET', body) {
+            service(url, method, body).then((result)=>{
+                this.goods = result;
+                this.filteredItems = result;
             });
         },
         cartIconClick() {
@@ -194,7 +232,6 @@ export const app = new Vue({
             } else {
                 this.cartIsVisible = true;
             }
-            console.log(this.cartIsVisible);
         },
         calculatePrice() {
             if (this.cartIsVisible) {
@@ -230,10 +267,7 @@ export const app = new Vue({
         bus.$on('push-good-to-cart', this.pushGoodToCart);
     },
     mounted() {
-        this.makeGetRequest('https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json').then((value) => {
-            this.goods = value;
-            this.filterItems("");
-        });
+        this.makeGetRequest(BaseUrl+Goods);
     },
 
 });
@@ -281,7 +315,6 @@ function makeGetRequest(url) {
     });
 }
 
-
 class GoodsList {
     BaseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
     Goods = "/catalogData.json";
@@ -314,7 +347,6 @@ class GoodsList {
     getBacketGoods() {
         return new Promise((resolve, reject) => {
             makeGetRequest(`${this.BaseUrl}${this.Basket}`).then((value) => {
-                console.log(value);
                 this.basket = value['contents'];
                 resolve();
             });
